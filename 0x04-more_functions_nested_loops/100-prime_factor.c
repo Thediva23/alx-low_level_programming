@@ -1,20 +1,36 @@
-#include <stdio.h>
-#include "main.h"
-/**
- * main - prints the largest prime factor of 612852475143
- * Nkechinyere
- * Return: always 0
- **/
+/*
+ * File: 100-prime_factor.c
+ * Auth: Nkechinyere
+ */
 
+#include <stdio.h>
+
+/**
+ * main - Finds and prints the largest prime
+ *        factor of the number 612852475143.
+ *
+ * Return: Always 0.
+ */
 int main(void)
 {
-	unsigned long int i, n = 612852475143;
+	long prime = 612852475143, div;
 
-	for (i = 3; i < 782849; i = i + 2)
+	while (div < (prime / 2))
 	{
-		while ((n % i == 0) && (n != i))
-			n = n / i;
+		if ((prime % 2) == 0)
+		{
+			prime /= 2;
+			continue;
+		}
+
+		for (div = 3; div < (prime / 2); div += 2)
+		{
+			if ((prime % div) == 0)
+				prime /= div;
+		}
 	}
-	printf("%lu\n", n);
+
+	printf("%ld\n", prime);
+
 	return (0);
-}i
+}
